@@ -28,8 +28,8 @@ android {
 publish {
     groupId = 'com.github.stfalcon'
     artifactId = 'mvphelper'
-    publishVersion = '0.1'
-    desc = 'Library that helps build MVP architecture using Dagger2 and Rx'
+    publishVersion = '0.1.1'
+    desc = 'Library that helps build MVP architecture based on Dagger2 and Rx using Kotlin or Java'
     licences = ['Apache-2.0']
     uploadName='MVPHelper'
     website = 'https://github.com/stfalcon-studio/MVPHelper'

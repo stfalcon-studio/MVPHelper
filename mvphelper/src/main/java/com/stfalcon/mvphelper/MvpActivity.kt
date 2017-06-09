@@ -53,7 +53,7 @@ abstract class MvpActivity<PRESENTER : IPresenter<VIEW>, VIEW> : DaggerAppCompat
         presenter = null
     }
 
-    protected fun parseIntent() {
+    open protected fun parseIntent() {
         //do nothing
     }
 
