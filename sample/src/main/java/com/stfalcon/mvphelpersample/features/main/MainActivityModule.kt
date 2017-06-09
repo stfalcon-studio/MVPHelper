@@ -1,7 +1,8 @@
 package com.stfalcon.mvphelpersample.features.main
 
+import android.content.Context
 import android.support.v4.app.FragmentManager
-import com.stfalcon.mvphelper.PresenterFactory
+import com.stfalcon.mvphelper.PresenterLoader
 import dagger.Module
 import dagger.Provides
 
@@ -20,6 +21,6 @@ class MainActivityModule {
             : MainActivityContract.View = mainActivity
 
     @Provides
-    fun providePresenterFactory(factory: MainActivityPresenter.Factory)
-            : PresenterFactory<MainActivityContract.Presenter> = factory
+    fun providePresenterLoader(context: Context, presenter: MainActivityPresenter)
+            : PresenterLoader<MainActivityContract.Presenter> = PresenterLoader(context, presenter)
 }

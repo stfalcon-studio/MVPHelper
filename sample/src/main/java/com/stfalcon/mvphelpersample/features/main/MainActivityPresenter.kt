@@ -2,13 +2,12 @@ package com.stfalcon.mvphelpersample.features.main
 
 import android.os.Handler
 import com.stfalcon.mvphelper.Presenter
-import com.stfalcon.mvphelper.PresenterFactory
 import javax.inject.Inject
 
 /*
  * Created by troy379 on 07.06.17.
  */
-class MainActivityPresenter
+class MainActivityPresenter @Inject constructor()
     : Presenter<MainActivityContract.View>(), MainActivityContract.Presenter {
 
     var loading: Boolean = false
@@ -35,18 +34,5 @@ class MainActivityPresenter
         this.view?.showLoading(loading)
         this.loading = loading
         this.loaded = !loading
-    }
-
-    override fun onViewDetached() {
-        super.onViewDetached()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
-    class Factory @Inject constructor() : PresenterFactory<MainActivityContract.Presenter> {
-
-        override fun create(): MainActivityPresenter = MainActivityPresenter()
     }
 }

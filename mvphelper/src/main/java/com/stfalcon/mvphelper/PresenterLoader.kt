@@ -2,32 +2,23 @@ package com.stfalcon.mvphelper
 
 import android.content.Context
 import android.support.v4.content.Loader
+import javax.inject.Inject
 
 /*
  * Created by troy379 on 07.06.17.
  */
-class PresenterLoader<PRESENTER : IPresenter<*>>(
+class PresenterLoader<PRESENTER : IPresenter<*>>
+@Inject constructor(
         context: Context,
-        val mPresenterFactory: PresenterFactory<PRESENTER>?
-) : Loader<PRESENTER>(context) {
-
-    private var mPresenter: PRESENTER? = null
+        var presenter: PRESENTER?)
+    : Loader<PRESENTER>(context) {
 
     override fun onStartLoading() {
-        if (mPresenter != null) {
-            deliverResult(mPresenter)
-            return
-        }
-        forceLoad()
-    }
-
-    override fun onForceLoad() {
-        mPresenter = mPresenterFactory?.create()
-        deliverResult(mPresenter)
+        deliverResult(presenter)
     }
 
     override fun onReset() {
-        mPresenter?.onDestroy()
-        mPresenter = null
+        presenter?.onDestroy()
+        presenter = null
     }
 }

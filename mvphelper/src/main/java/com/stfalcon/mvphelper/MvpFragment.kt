@@ -18,8 +18,9 @@ abstract class MvpFragment<PRESENTER : IPresenter<VIEW>, in VIEW> : DaggerFragme
 
     protected abstract fun getLayoutResId(): Int
 
-    @Inject lateinit var presenterFactory: PresenterFactory<PRESENTER>
+    @Inject lateinit var presenterLoader: PresenterLoader<PRESENTER>
     protected var presenter: PRESENTER? = null
+
     private var firstStart: Boolean = false
     private val needToCallStart = AtomicBoolean(false)
 
@@ -48,8 +49,7 @@ abstract class MvpFragment<PRESENTER : IPresenter<VIEW>, in VIEW> : DaggerFragme
         super.onStop()
     }
 
-    override fun onCreateLoader(id: Int, args: Bundle): Loader<PRESENTER>
-            = PresenterLoader(activity, presenterFactory)
+    override fun onCreateLoader(id: Int, args: Bundle): Loader<PRESENTER> = presenterLoader
 
     override fun onLoadFinished(loader: Loader<PRESENTER>, presenter: PRESENTER) {
         this.presenter = presenter
@@ -60,10 +60,6 @@ abstract class MvpFragment<PRESENTER : IPresenter<VIEW>, in VIEW> : DaggerFragme
 
     override fun onLoaderReset(loader: Loader<PRESENTER>) {
         presenter = null
-    }
-
-    protected fun parseIntent() {
-        //do nothing
     }
 
     @Suppress("UNCHECKED_CAST")
