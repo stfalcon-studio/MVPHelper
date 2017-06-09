@@ -17,10 +17,6 @@ class MainActivityModule {
             : FragmentManager = activity.supportFragmentManager
 
     @Provides
-    fun provideView(mainActivity: MainActivity)
-            : MainActivityContract.View = mainActivity
-
-    @Provides
     fun providePresenterLoader(context: Context, presenter: MainActivityPresenter)
             : PresenterLoader<MainActivityContract.Presenter> = PresenterLoader(context, presenter)
 }
