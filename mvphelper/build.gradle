@@ -1,0 +1,66 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+publish {
+    groupId = 'com.github.stfalcon'
+    artifactId = 'mvphelper'
+    publishVersion = '0.1'
+    desc = 'Library that helps build MVP architecture using Dagger2 and Rx'
+    licences = ['Apache-2.0']
+    uploadName='MVPHelper'
+    website = 'https://github.com/stfalcon-studio/MVPHelper'
+}
+
+ext {
+    support_libraries_version = '25.3.1'
+    dagger_version = '2.10'
+    rxjava_version = '2.0.8'
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Android Support
+    compile "com.android.support:appcompat-v7:$support_libraries_version"
+
+    //Kotlin
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    //Dagger
+    compile "com.google.dagger:dagger:$dagger_version"
+    compile "com.google.dagger:dagger-android:$dagger_version"
+    compile "com.google.dagger:dagger-android-support:$dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    //Rx
+    compile "io.reactivex.rxjava2:rxjava:$rxjava_version"
+}
+
+repositories {
+    mavenCentral()
+}
