@@ -64,7 +64,7 @@ abstract class MvpFragment<PRESENTER : IPresenter<VIEW>, in VIEW> : DaggerFragme
 
     @Suppress("UNCHECKED_CAST")
     private fun doStart() {
-        presenter?.onViewAttached(this as VIEW)
+        presenter?.onViewAttached(this as VIEW, firstStart)
         firstStart = false
     }
 }

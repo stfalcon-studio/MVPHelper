@@ -59,7 +59,7 @@ abstract class MvpActivity<PRESENTER : IPresenter<VIEW>, VIEW> : DaggerAppCompat
 
     @Suppress("UNCHECKED_CAST")
     private fun doStart() {
-        presenter?.onViewAttached(this as VIEW)
+        presenter?.onViewAttached(this as VIEW, firstStart)
         firstStart = false
     }
 }

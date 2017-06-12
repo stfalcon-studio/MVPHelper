@@ -10,7 +10,7 @@ abstract class Presenter<VIEW> : IPresenter<VIEW> {
     protected var view: VIEW? = null
     protected val disposables = CompositeDisposable()
 
-    override fun onViewAttached(view: VIEW) {
+    override fun onViewAttached(view: VIEW, created: Boolean) {
         this.view = view
     }
 
