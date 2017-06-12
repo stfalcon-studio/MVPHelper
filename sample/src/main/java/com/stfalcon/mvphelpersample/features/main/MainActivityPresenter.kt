@@ -13,8 +13,8 @@ class MainActivityPresenter @Inject constructor()
     var loading: Boolean = false
     var loaded: Boolean = false
 
-    override fun onViewAttached(view: MainActivityContract.View) {
-        super.onViewAttached(view)
+    override fun onViewAttached(view: MainActivityContract.View, created: Boolean) {
+        super.onViewAttached(view, created)
         view.showLoading(loading)
         loadData()
     }
