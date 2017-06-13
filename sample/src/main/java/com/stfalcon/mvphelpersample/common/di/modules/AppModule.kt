@@ -11,7 +11,8 @@ import javax.inject.Singleton
  * Created by troy379 on 07.06.17.
  */
 @Module(subcomponents = arrayOf(
-        MainActivitySubComponent::class))
+        MainActivitySubComponent::class
+))
 class AppModule {
 
     @Singleton

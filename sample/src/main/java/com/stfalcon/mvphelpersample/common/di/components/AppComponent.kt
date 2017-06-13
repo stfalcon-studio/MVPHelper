@@ -1,7 +1,8 @@
 package com.stfalcon.mvphelpersample.common.di.components
 
 import com.stfalcon.mvphelpersample.App
-import com.stfalcon.mvphelpersample.common.di.builders.ActivitiesBuildersModule
+import com.stfalcon.mvphelpersample.common.di.factories.ActivitiesInjectorFactories
+import com.stfalcon.mvphelpersample.common.di.factories.FragmentsInjectorFactories
 import com.stfalcon.mvphelpersample.common.di.modules.AppModule
 import dagger.BindsInstance
 import dagger.Component
@@ -13,10 +14,11 @@ import javax.inject.Singleton
  */
 @Singleton
 @Component(modules = arrayOf(
-        ActivitiesBuildersModule::class,
         AndroidSupportInjectionModule::class,
-        AppModule::class)
-)
+        ActivitiesInjectorFactories::class,
+        FragmentsInjectorFactories::class,
+        AppModule::class
+))
 interface AppComponent {
 
     @Component.Builder

@@ -1,4 +1,4 @@
-package com.stfalcon.mvphelpersample.common.di.builders
+package com.stfalcon.mvphelpersample.common.di.factories
 
 import android.app.Activity
 import com.stfalcon.mvphelpersample.features.main.MainActivity
@@ -13,7 +13,7 @@ import dagger.multibindings.IntoMap
  * Created by troy379 on 07.06.17.
  */
 @Module
-abstract class ActivitiesBuildersModule {
+abstract class ActivitiesInjectorFactories {
 
     @Binds
     @IntoMap
